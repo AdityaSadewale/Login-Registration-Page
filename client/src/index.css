@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  font-family: 'Inter', sans-serif;
+  color-scheme: dark;
+}
+
+@theme {
+  --color-slate-950: #020617;
+  --color-slate-900: #0f172a;
+}
+
+@layer base {
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #020617;
+    color: #e2e8f0;
+    -webkit-font-smoothing: antialiased;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(124, 58, 237, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%);
+    min-height: 100vh;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex-grow: 1;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    background-color: #020617;
+  }
+}
+
+@layer components {
+  .glass {
+    background-color: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  .glass-card {
+    background-color: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(40px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 2.5rem;
+    position: relative;
+  }
+
+  .glass-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 2.5rem;
+    padding: 1px;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent, rgba(255, 255, 255, 0.05));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .btn-primary {
+    position: relative;
+    overflow: hidden;
+    background-color: #7c3aed;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 1rem;
+    transition: all 0.3s;
+    box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.3);
+  }
+
+  .btn-primary:hover {
+    background-color: #8b5cf6;
+    transform: scale(1.02);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  .input-field {
+    background-color: rgba(2, 6, 23, 0.5);
+    border: 1px solid #1e293b;
+    color: #f8fafc;
+    font-size: 0.875rem;
+    border-radius: 1rem;
+    width: 100%;
+    padding: 0.875rem;
+    outline: none;
+    transition: all 0.2s;
+  }
+
+  .input-field:focus {
+    box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.5);
+    border-color: #7c3aed;
+  }
+
+  .bg-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  }
+}
