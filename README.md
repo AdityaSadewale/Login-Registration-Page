@@ -1,6 +1,5 @@
 # MERN Authentication System with Silent Refresh 🔐
 
-
 A production-ready, highly secure authentication system built with the MERN stack (MongoDB, Express, React, Node.js). This project implements the **"Silent Refresh"** token strategy to provide a seamless user experience while maintaining high security standards.
 
 ## ✨ Key Features
