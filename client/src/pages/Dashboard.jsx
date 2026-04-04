@@ -4,6 +4,7 @@ import { LogOut, User, ShieldCheck, ShieldAlert, Key, Clock, Database } from 'lu
 const Dashboard = () => {
   const { user, logout } = useAuth();
 
+  
   return (
     <div className="min-h-screen w-full bg-slate-950 bg-grid relative overflow-hidden p-6 md:p-12">
       {/* Background Orbs */}
