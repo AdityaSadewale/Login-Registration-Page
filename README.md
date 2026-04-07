@@ -4,6 +4,7 @@ A production-ready, highly secure authentication system built with the MERN stac
 
 ## ✨ Key Features
 
+
 -   **Silent Refresh Strategy**: Automatically updates Access Tokens in the background without user intervention.
 -   **Security First**:
     -   **HTTP-Only Cookies**: Refresh Tokens are stored in secure, HTTP-Only cookies to prevent XSS.
