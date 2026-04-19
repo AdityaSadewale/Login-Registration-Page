@@ -1,0 +1,17 @@
+{
+  "name": "login-registration-system",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install",
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev",
+    "dev": "npx concurrently \"npm run server\" \"npm run client\"",
+    "build-client": "cd client && npm run build",
+    "build": "npm run build-client",
+    "start": "node server/index.js"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

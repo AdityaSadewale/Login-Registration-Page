@@ -50,31 +50,35 @@
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   }
 
-  .glass-card {
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 24px 64px -16px rgba(0, 0, 0, 0.7);
-    border-radius: 2rem;
+  .glass-card-premium {
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%),
+                rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8),
+                inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    border-radius: 2.5rem;
     position: relative;
     overflow: hidden;
   }
 
-  .glass-card::before {
+  .glass-card-premium::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.15), transparent 60%);
+    background: radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.04), transparent 40%);
     pointer-events: none;
+    z-index: 1;
   }
 
   .btn-primary {
-    @apply relative overflow-hidden bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 shadow-xl;
+    @apply relative overflow-hidden bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-500 shadow-xl;
+    background-size: 200% auto;
   }
 
   .btn-primary:hover {
-    @apply transform scale-[1.02] shadow-purple-500/20 shadow-2xl;
-    filter: brightness(1.1);
+    @apply transform scale-[1.01] shadow-indigo-500/25 shadow-2xl;
+    background-position: right center;
   }
 
   .btn-primary:active {
@@ -82,26 +86,36 @@
   }
 
   .input-field {
-    @apply bg-slate-900/50 border border-slate-800 text-slate-100 text-base rounded-2xl w-full p-4 outline-none transition-all duration-300;
+    @apply bg-slate-900/40 border border-white/5 text-slate-100 text-base rounded-2xl w-full p-4 pl-12 outline-none transition-all duration-500 backdrop-blur-md;
   }
 
   .input-field:focus {
-    @apply border-purple-500 ring-4 ring-purple-500/10 bg-slate-900/80;
+    @apply border-blue-500/50 ring-4 ring-blue-500/10 bg-slate-900/60;
   }
 
   .bg-grid {
     background-size: 60px 60px;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   }
 
   /* Animations */
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(1deg); }
+    66% { transform: translateY(5px) rotate(-1deg); }
   }
 
   .animate-float {
-    animation: float 6s ease-in-out infinite;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
   }
 }

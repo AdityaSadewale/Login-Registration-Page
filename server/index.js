@@ -5,6 +5,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const path = require('path');
 const authRoutes = require('./routes/authRoutes');
 
 const app = express();
@@ -47,6 +48,17 @@ app.get('/', (req, res) => {
 });
 
 app.use('/auth', authLimiter, authRoutes);
+
+// Serve Static Assets in Production
+if (process.env.NODE_ENV === 'production') {
+  // Set build folder
+  const buildPath = path.join(__dirname, '../client/dist');
+  app.use(express.static(buildPath));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(buildPath, 'index.html'));
+  });
+}
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
