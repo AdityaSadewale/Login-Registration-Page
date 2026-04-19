@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const authRoutes = require('./routes/authRoutes');
 
 const app = express();
@@ -18,6 +19,23 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+// Rate Limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again after 15 minutes',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use(limiter);
+
+// Specific Rate Limit for Auth Routes
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 20, // stricter limit for login/register
+  message: 'Too many authentication attempts, please try again later'
+});
+
 // Body Parsers
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -25,10 +43,10 @@ app.use(cookieParser());
 
 // Routes
 app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to MERN Auth API' });
+  res.json({ message: 'Welcome to MERN Auth API - High Security Edition' });
 });
 
-app.use('/auth', authRoutes);
+app.use('/auth', authLimiter, authRoutes);
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
@@ -37,7 +55,7 @@ app.use((err, req, res, next) => {
 });
 
 // Database Connection
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('Connected to MongoDB');
     app.listen(PORT, () => {
