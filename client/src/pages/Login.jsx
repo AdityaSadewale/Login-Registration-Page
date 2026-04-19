@@ -5,6 +5,7 @@ import { LogIn, Mail, Lock, Loader2, XCircle, Info } from 'lucide-react';
 import Footer from '../components/Footer';
 import authBg from '../assets/auth_background_login_1776527501042.png';
 
+
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',

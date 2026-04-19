@@ -4,30 +4,37 @@ const fetchClient = async (endpoint, options = {}) => {
   const url = `${BASE_URL}${endpoint}`;
   
   const defaultOptions = {
-    credentials: 'include', // Important for HttpOnly cookies
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
     },
     ...options,
   };
 
-  const response = await fetch(url, defaultOptions);
+  try {
+    const response = await fetch(url, defaultOptions);
 
-  if (response.status === 401 && !url.includes('/auth/me')) {
-    // Session might have expired
-    window.dispatchEvent(new CustomEvent('auth-auth-expired'));
-  }
+    if (response.status === 401 && !url.includes('/auth/me')) {
+      window.dispatchEvent(new CustomEvent('auth-auth-expired'));
+    }
 
-  const data = await response.json();
+    const data = await response.json();
 
-  if (!response.ok) {
-    const error = new Error(data.message || 'Something went wrong');
-    error.status = response.status;
-    error.data = data;
+    if (!response.ok) {
+      const error = new Error(data.message || `Request failed with status ${response.status}`);
+      error.status = response.status;
+      error.data = data;
+      throw error;
+    }
+
+    return data;
+  } catch (error) {
+    if (error.name === 'TypeError' && error.message === 'Failed to fetch') {
+      console.error('Network Error: Make sure your server is running at', BASE_URL);
+      throw new Error(`Cannot connect to server at ${BASE_URL}. Is your backend running?`);
+    }
     throw error;
   }
-
-  return data;
 };
 
 export default fetchClient;

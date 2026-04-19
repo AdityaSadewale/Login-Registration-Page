@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 const Dashboard = () => {
   const { user, logout } = useAuth();
 
+  
   return (
     <div className="min-h-screen w-full bg-slate-950 flex flex-col relative overflow-hidden">
       {/* Background Decor */}
