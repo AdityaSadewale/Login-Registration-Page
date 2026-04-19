@@ -1,81 +1,43 @@
-Full-Stack Login & Registration System
-A robust authentication system built using the MERN Stack (MongoDB, Express, React, Node.js). This project features a modern UI/UX for user onboarding, secure password handling, and a protected dashboard for authenticated users.
+🔐 MERN Auth System
+A clean, production-ready Login & Registration portal built with the MERN stack. Features secure authentication, schema validation, and a modern dashboard UI.
 
-🚀 Features
-User Authentication: Secure Sign-up and Login functionality.
-
-Protected Routes: Dashboard access restricted to authorized users only.
-
-Modern UI: Responsive design built with React and custom CSS.
-
-Secure Backend: Password hashing and secure API communication.
-
-Form Validation: Client-side and server-side checks for data integrity.
-
-🛠️ Tech Stack
-Frontend:
-
-React.js
-
-CSS3 (Custom styling)
-
-Fetch API for backend communication
-
-Backend:
-
-Node.js & Express.js
-
-MongoDB (Database)
-
-Zod (Schema validation)
-
-📁 Project Structure
-Plaintext
-├── client/           # React frontend
-│   ├── src/
-│   │   ├── api/      # API configurations
-│   │   ├── pages/    # Login, Signup, and Dashboard components
-│   │   └── index.css # Global styles
-├── server/           # Express backend
-│   ├── index.js      # Main server entry point
-│   └── .env.example  # Template for environment variables
-└── package.json      # Project dependencies
-⚙️ Installation & Setup
-Clone the repository:
+🚀 Quick Start
+Clone & Install
 
 Bash
 git clone https://github.com/AdityaSadewale/Login-Registration-Page.git
 cd Login-Registration-Page
-Setup the Server:
+# Install dependencies for both
+cd server && npm install
+cd ../client && npm install
+Environment Setup
+Create a .env in the /server folder:
 
-Bash
-cd server
-npm install
-Create a .env file in the server directory.
+Code snippet
+PORT=5000
+MONGODB_URI=your_mongodb_uri
+Run
 
-Add your PORT and MONGODB_URI.
+Backend: npm start (in /server)
 
-Setup the Client:
+Frontend: npm start (in /client)
 
-Bash
-cd ../client
-npm install
-Run the Application:
+🛠️ Tech Stack
+Frontend: React.js, CSS3
 
-Start the backend: npm start (inside /server)
+Backend: Node.js, Express.js
 
-Start the frontend: npm start (inside /client)
+Database: MongoDB
 
-📝 Future Enhancements
-[ ] Integration of JWT (JSON Web Tokens) for persistent sessions.
+Validation: Zod
 
-[ ] Password reset functionality via email.
+✨ Key Features
+✅ Secure User Registration & Login
 
-[ ] Google OAuth integration.
+✅ Form Validation (Client & Server side)
 
-👤 Author
-Aditya Sadewale
+✅ Protected Dashboard Route
 
-GitHub: @AdityaSadewale
+✅ Organized API Fetch Layer
 
-Role: Full-Stack & AI Developer
+Developed by Aditya Sadewale
