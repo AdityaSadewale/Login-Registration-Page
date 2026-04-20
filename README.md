@@ -26,11 +26,8 @@ Frontend: npm start (in /client)
 
 🛠️ Tech Stack
 Frontend: React.js, CSS3
-
 Backend: Node.js, Express.js
-
 Database: MongoDB
-
 Validation: Zod
 
 </br>
