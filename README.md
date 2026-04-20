@@ -5,7 +5,6 @@ A clean, production-ready Login & Registration portal built with the MERN stack.
 
 🚀 Quick Start
 Clone & Install
-</br>
 Bash
 git clone https://github.com/AdityaSadewale/Login-Registration-Page.gita
 cd Login-Registration-Page
@@ -14,8 +13,6 @@ cd server && npm install
 cd ../client && npm install
 Environment Setup
 Create a .env in the /server folder:
-
-</br>
 Code snippet
 PORT=5000
 MONGODB_URI=your_mongodb_uri
